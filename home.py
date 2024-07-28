@@ -20,7 +20,7 @@ combined_features = movies_data[selected_features].apply(lambda x: ' '.join(x), 
 # Convert text data to feature vectors
 vectorizer = TfidfVectorizer()
 feature_vector = vectorizer.fit_transform(combined_features)
-
+st.set_page_config(page_title="MovieMatcher")
 # Cosine Similarity - getting similarity scores
 similarity = cosine_similarity(feature_vector)
 

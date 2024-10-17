@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation App</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('13254.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        .container {
+            position: relative;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                #e62429,
+                #1a1a1a,
+                #4b0082,
+                #1a1a1a
+            );
+            z-index: -1;
+            animation: animateGradient 10s linear infinite;
+        }
+        @keyframes animateGradient {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .content {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #e62429;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        p {
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        input[type="submit"] {
+            padding: 0.75rem 1.5rem;
+            background-color: #e62429;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #c61017;
+        }
+        .error {
+            color: #ff6b6b;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Movie Recommendation App</h1>
+            <p>Get recommendations in seconds</p>
+            
+            <form method="POST">
+                <input type="text" name="movie_name" placeholder="Enter your favorite movie name" required>
+                <input type="submit" value="Get Recommendations">
+            </form>
+            
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
